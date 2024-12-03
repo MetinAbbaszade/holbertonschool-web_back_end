@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+""" returning tuple but in list:d """
 import typing
-""" returning tuple but in list:d"""
+
 
 
 def element_length(lst: typing.Iterable[typing.Sequence]) -> \
