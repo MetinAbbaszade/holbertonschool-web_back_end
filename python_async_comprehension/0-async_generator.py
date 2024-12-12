@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-""" file for understanding comprehensions"""
+"""Module for asynchronous generator."""
 import asyncio
-from random import uniform
+import random
 
 
 async def async_generator():
-    """ function """
-    for i in range(10):
+    """Function for asynchronous generator."""
+    for _ in range(10):
         await asyncio.sleep(1)
-        yield uniform(0, 10)
+        yield random.uniform(0, 10)
