@@ -42,27 +42,15 @@ class Server:
         return dataset[start_index:end_index]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """
-        Function of dictionary
-        """
-        datas = self.dataset()
-        data = self.get_page(page, page_size)
-
-        if page + 1 < len(datas):
-            next_page = page + 1
-        else:
-            next_page = 'None'
-
-        if page - 1 > 0:
-            prev_page = page - 1
-        else:
-            prev_page = 'None'
+        data = self.get_page(page=page, page_size=page_size)
+        total_len = len(self.dataset())
+        total_pages = math.ceil(total_len / page_size)
 
         return {
-            'page_size': page_size,
-            'page': page,
-            'data': data,
-            'next_page': page + 1 if page + 1 < len(datas) else 'None',
-            'prev_page': page - 1 if page - 1 > 0 else 'None',
-            'total_pages': len(datas)
-        }
+            "page_size": len(data),
+            "page": page,
+            "data": data,
+            "next_page": page + 1 if page < total_pages else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": total_pages
+            }
